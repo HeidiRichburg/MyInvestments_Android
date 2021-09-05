@@ -2,15 +2,15 @@ name: Android CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
-    
+    branches: [ main ]
+
 jobs:
   build:
-  
-    runs-on: ubuntu-latests
-    
+
+    runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: set up JDK 1.8
@@ -18,10 +18,9 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: ./gradelw build
+      run: ./gradlew build
     - name: Upload APK
       uses: actions/upload-artifact@v2.1.4
       with:
         name: app
         path: app/build/outputs/apk/debug/app-debug.apk
-        
